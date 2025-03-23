@@ -1,4 +1,4 @@
-let baseUrl = "http://localhost:3000/characters/1"
+let baseUrl = "http://localhost:3000/characters"
 fetch (baseUrl)
 .then (response => response.json ())
 .then (data => displayName(data) )
@@ -15,8 +15,7 @@ function displayName () {
 }
 function displayImage () {
     let img = document.querySelector ("img")
-    img.src = "https://thumbs.gfycat.com/EquatorialIckyCat-max-1mb.gif"
-    
+    img.src = "https://media.giphy.com/media/w20wYXctkVIZO/giphy.gif?cid=790b7611l9grx1ronrashb99f92408y95f8sn5m55iaiq7vy&ep=v1_gifs_search&rid=giphy.gif&ct=g"
 }
 displayImage()
 
@@ -36,6 +35,8 @@ displayImage()
 
 // }
 
+
+function
     
 
 
