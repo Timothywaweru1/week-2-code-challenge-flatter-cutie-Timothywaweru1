@@ -36,7 +36,9 @@ displayImage()
 // }
 
 
-function
+function showVotes () {
+    const votes = document.querySelector ("#vote-count")
+}
     
 
 
