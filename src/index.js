@@ -1,44 +1,43 @@
-let baseUrl = "http://localhost:3000/characters"
-fetch (baseUrl)
-.then (response => response.json ())
-.then (data => displayName(data) )
+document.addEventListener("DOMContentLoaded", function () {
+    const baseURL = "https://yoh-xi.vercel.app/characters";
+    const characterBar = document.getElementById("character-bar");
+    const voteForm = document.getElementById("votes-form");
+    const resetBtn = document.getElementById("reset-btn");
+    let selectedCharacter = null;
+    fetch(baseURL)
+        .then(res => res.json())
+        .then(characters => {
+            characters.forEach(cha => {
+                let span = document.createElement("span");
+                span.setAttribute ("id","text")
+                span.innerText = cha.name;
+                characterBar.appendChild(span);
+                span.addEventListener("click", function () {
+                    selectedCharacter = cha;
+                    document.getElementById("name").innerText = cha.name;
+                    document.getElementById("image").src = cha.image;
+                    document.getElementById("vote-count").innerText = cha.votes;
+                });
+            });
+        });
 
-function showName () {
-    let show = document.querySelector ("#name")
-    show.innerHTML = `<p id="name">Mr.Cute</p> `
+    voteForm.addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        if (!selectedCharacter) return;
 
-}
-function displayName () {
-    let top = document.querySelector ("#text1")
-    top.addEventListener ("click",showName) 
+        let voteInput = document.getElementById("votes");
+        let votes = parseInt(voteInput.value) || 0;
+        selectedCharacter.votes += votes;
 
-}
-function displayImage () {
-    let img = document.querySelector ("img")
-    img.src = "https://media.giphy.com/media/w20wYXctkVIZO/giphy.gif?cid=790b7611l9grx1ronrashb99f92408y95f8sn5m55iaiq7vy&ep=v1_gifs_search&rid=giphy.gif&ct=g"
-}
-displayImage()
+        document.getElementById("vote-count").innerText = selectedCharacter.votes;
+        voteInput.value = "";
+    });
 
-// function showNameOfMonkey () {
-//     const show = document.querySelector ("#name")
-//     show.innerHTML = `<p id="name">Mx.Monkey</p>`
-// }
+    resetBtn.addEventListener("click", function () {
+        if (!selectedCharacter) return;
 
-
-// function displayName () {
-//     let show = document.querySelector ("#text2")
-//     show.addEventListener ("click",showName)
-// }
-// function showMonkey (name) {
-// let show = document.querySelector ("#text2")
-// show.addEventListener ("click",showNameOfMonkey)
-
-// }
-
-
-function showVotes () {
-    const votes = document.querySelector ("#vote-count")
-}
-    
-
+        selectedCharacter.votes = 0;
+        document.getElementById("vote-count").innerText = 0;
+    });
+});
 

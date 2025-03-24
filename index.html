@@ -10,11 +10,6 @@
 
     <div id="character-bar">
       <!-- show characters names here -->
-       <p id="text1" class="text">Mr.Cute</p>
-       <p id="text2" class="text">Mx.Monkey</p>
-       <p id="text3" class="text">Ms.Zebra</p>
-       <p id="text4" class="text">Dr.Lion</p>
-       <p id="text5" class="text">Mme.Panda</p>
     </div>
 
     <div class="characterInfo">
@@ -25,10 +20,10 @@
           src="assets/dummy.gif"
           alt="Character's Name"
         /><!--display character image here -->
-        <h4>Total Votes: <span id="vote-count">Character's Votes</span></h4>
+        <h4>Total Votes: <span id="vote-count"></span></h4>
         <form id="votes-form">
           <input type="text" placeholder="Enter Votes" id="votes" name="votes" />
-          <input type="submit" value="Add Votes" />
+          <input type="submit" value="Add Votes" id="clickable"/>
         </form>
         <button id="reset-btn">Reset Votes</button>
       </div>
